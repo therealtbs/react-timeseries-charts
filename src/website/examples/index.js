@@ -27,7 +27,7 @@ import wind from "./wind/Index";
 import volume from "./volume/Index";
 import nyc from "./nyc/Index";
 import climate from "./climate/Index";
-
+import trend from "./trend/Index";
 
 export default {
   ...realtime,
@@ -44,5 +44,6 @@ export default {
   ...wind,
   ...volume,
   ...nyc,
-  ...climate
+  ...climate,
+  ...trend
 };

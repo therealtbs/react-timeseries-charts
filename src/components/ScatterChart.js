@@ -250,7 +250,6 @@ export default class ScatterChart extends React.Component {
             cy={y}
             r={radius}
             style={style}
-            pointerEvents="none"
             onMouseMove={this.handleHover}
             onClick={e => this.handleClick(e, event, column)}
           />
@@ -387,10 +386,12 @@ ScatterChart.propTypes = {
    * objects, with each object specifying the label and value
    * to be shown in the info box.
    */
-  info: React.PropTypes.arrayOf(React.PropTypes.shape({
+  info: React.PropTypes.arrayOf(
+    React.PropTypes.shape({
       label: React.PropTypes.string, // eslint-disable-line
       value: React.PropTypes.string // eslint-disable-line
-  })),
+    })
+  ),
   /**
    * The selected dot, which will be rendered in the "selected" style.
    * If a dot is selected, all other dots will be rendered in the "muted" style.
@@ -435,7 +436,6 @@ ScatterChart.propTypes = {
    */
   height: React.PropTypes.number
 };
-
 
 ScatterChart.defaultProps = {
   columns: ["value"],
