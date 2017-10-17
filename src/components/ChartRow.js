@@ -90,7 +90,7 @@ export default class ChartRow extends React.Component {
         // axis id.
         this.scaleMap = {};
 
-        const innerHeight = +this.props.height - AXIS_MARGIN * 2;
+        const innerHeight = +this.props.height - (this.props.noMargin ? 0 : AXIS_MARGIN * 2);
         const rangeTop = AXIS_MARGIN;
         const rangeBottom = innerHeight - AXIS_MARGIN;
         React.Children.forEach(this.props.children, child => {
@@ -120,7 +120,7 @@ export default class ChartRow extends React.Component {
    * axis scales.
    */
     componentWillReceiveProps(nextProps) {
-        const innerHeight = +nextProps.height - AXIS_MARGIN * 2;
+        const innerHeight = +nextProps.height - (this.props.noMargin ? 0 : AXIS_MARGIN * 2);
         const rangeTop = AXIS_MARGIN;
         const rangeBottom = innerHeight - AXIS_MARGIN;
 
@@ -158,7 +158,7 @@ export default class ChartRow extends React.Component {
         const axes = []; // Contains all the yAxis elements used in the render
         const chartList = []; // Contains all the Chart elements used in the render
         // Dimensions
-        const innerHeight = +this.props.height - AXIS_MARGIN * 2;
+        const innerHeight = +this.props.height - (this.props.noMargin ? 0 : AXIS_MARGIN * 2);
 
         //
         // Build a map of elements that occupy left or right slots next to the
@@ -431,7 +431,8 @@ export default class ChartRow extends React.Component {
 ChartRow.defaultProps = {
     trackerTimeFormat: "%b %d %Y %X",
     enablePanZoom: false,
-    height: 100
+    height: 100,
+    noMargin: false
 };
 
 ChartRow.propTypes = {
@@ -439,6 +440,10 @@ ChartRow.propTypes = {
    * The height of the row.
    */
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    /**
+   * Whether or not this row should have 5 pixels margin at the top and bottom
+   */
+    noMargin: PropTypes.bool,
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
     leftAxisWidths: PropTypes.arrayOf(PropTypes.number),
     rightAxisWidths: PropTypes.arrayOf(PropTypes.number),
