@@ -263,6 +263,7 @@ export default class ChartContainer extends React.Component {
                         infoWidth={this.props.trackerHintWidth}
                         infoHeight={this.props.trackerHintHeight}
                         info={this.props.trackerValues}
+                        infoStyle={this.props.trackerStyle}
                     />
                 </g>
             );
@@ -392,7 +393,7 @@ ChartContainer.propTypes = {
    * on the timeRange prop and there is no need to set this.
    *
    * However, some options exist:
-   * 
+   *
    *  - setting format to "day", "month" or "year" will show only ticks on those,
    * and every one of those intervals. For example maybe you are showing a bar
    * chart for October 2014 then setting the format to "day" will insure that a
@@ -401,9 +402,9 @@ ChartContainer.propTypes = {
    *  - setting format to "relative" interprets the time as a duration. This
    * is good for data that is specified relative to its start time, rather than
    * as an actual date/time
-   * 
+   *
    *  - setting the format to a d3 format string will use that format
-   * 
+   *
    *  - supplying a function for format will cause that function to be called
    * whenever rendering a time
    */
@@ -468,6 +469,10 @@ ChartContainer.propTypes = {
             })
         )
     ]),
+    /**
+   * Style for the tracker, passed down to TimeMarker component.
+   */
+    trackerStyle: PropTypes.object,
     /**
    * A Date specifying the position of the tracker line on the chart. It is
    * common to take this from the onTrackerChanged callback so that the tracker
